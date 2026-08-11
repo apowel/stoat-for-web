@@ -13,7 +13,11 @@ import codegenPlugin from "./codegen.plugin";
 import { addFontPreload } from "./fontpreload.plugin";
 
 const base = process.env.BASE_PATH ?? "/";
+
+const appName = process.env.VITE_APP_NAME || "Stoat";
+
 const pwaScope = process.env.PWA_SCOPE || base;
+
 
 export default defineConfig({
   base,
