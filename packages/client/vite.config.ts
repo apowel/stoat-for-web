@@ -18,7 +18,6 @@ const appName = process.env.VITE_APP_NAME || "Stoat";
 
 const pwaScope = process.env.PWA_SCOPE || base;
 
-
 export default defineConfig({
   base,
   plugins: [
@@ -35,6 +34,15 @@ export default defineConfig({
     solidSvg({
       defaultAsComponent: false,
     }),
+    {
+      name: "html-transform",
+      transformIndexHtml(html) {
+        return html.replace(
+          /<title>(.*?)<\/title>/,
+          `<title>${appName}</title>`,
+        );
+      },
+    },
     addFontPreload(),
     VitePWA({
       srcDir: "src",
