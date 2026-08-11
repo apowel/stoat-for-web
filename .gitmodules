@@ -3,7 +3,7 @@
 	url = https://github.com/stoatchat/javascript-client-sdk
 [submodule "packages/client/assets"]
 	path = packages/client/assets
-	url = https://git.stoatinternal.com/brand/assets.git
+	url = git@github.com:bundle-o-cells/stoat-desktop-assets.git
 	update = none
 [submodule "packages/solid-livekit-components"]
 	path = packages/solid-livekit-components
