@@ -10,3 +10,4 @@ dev-dist
 .vercel
 
 .idea
+.pnpm-store
