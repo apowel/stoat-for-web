@@ -34,7 +34,12 @@ const files = readdirSync(OUT_DIR, { recursive: true });
 
 for (const file of files) {
   const path = join(OUT_DIR, file);
-  if (!path.endsWith(".js") && !path.endsWith(".html")) continue;
+  if (
+    !path.endsWith(".js") &&
+    !path.endsWith(".html") &&
+    !path.endsWith(".webmanifest")
+  )
+    continue;
 
   let data = readFileSync(path, "utf-8");
   let modified = false;
@@ -43,10 +48,11 @@ for (const file of files) {
     if (data.includes(placeholder)) {
       if (value) {
         data = data.replaceAll(placeholder, value);
-      } else {
+        modified = true;
+      } else if (path.endsWith(".js")) {
         data = data.replaceAll(`"${placeholder}"`, "void 0");
+        modified = true;
       }
-      modified = true;
     }
   }
 
